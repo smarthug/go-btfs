@@ -263,6 +263,9 @@ func (dc *dcWrap) collectionAgent(node *core.IpfsNode) {
 		// check config for explicit consent to data collect
 		// consent can be changed without reinitializing data collection
 		if config.Experimental.StorageHostEnabled || config.Experimental.Analytics {
+			if config.Experimental.Analytics != config.Experimental.StorageHostEnabled {
+				fmt.Println("Experimental.Analytics is override by Experimental.StorageHostEnabled")
+			}
 			dc.sendData(node, config)
 		}
 	}
