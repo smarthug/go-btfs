@@ -1,9 +1,12 @@
-package upload
+package offline
 
 import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/TRON-US/go-btfs/core/commands/storage/helper"
+	uh "github.com/TRON-US/go-btfs/core/commands/storage/upload/helper"
+	"github.com/TRON-US/go-btfs/core/commands/storage/upload/sessions"
 	"strconv"
 
 	cmds "github.com/TRON-US/go-btfs-cmds"
@@ -11,7 +14,7 @@ import (
 	cmap "github.com/orcaman/concurrent-map"
 )
 
-var storageUploadSignContractBatchCmd = &cmds.Command{
+var StorageUploadSignContractBatchCmd = &cmds.Command{
 	Helptext: cmds.HelpText{
 		Tagline: "Get the unsigned contracts from the upload session.",
 		ShortDescription: `
@@ -28,11 +31,11 @@ This command reads all the unsigned contracts from the upload session
 	},
 	Run: func(req *cmds.Request, res cmds.ResponseEmitter, env cmds.Environment) error {
 		ssID := req.Arguments[0]
-		ctxParams, err := ExtractContextParams(req, env)
+		ctxParams, err := uh.ExtractContextParams(req, env)
 		if err != nil {
 			return err
 		}
-		rss, err := GetRenterSession(ctxParams, ssID, "", make([]string, 0))
+		rss, err := sessions.GetRenterSession(ctxParams, ssID, "", make([]string, 0))
 		if err != nil {
 			return err
 		}
@@ -47,21 +50,21 @@ This command reads all the unsigned contracts from the upload session
 		if err != nil {
 			return err
 		}
-		if len(signedContracts) != len(rss.shardHashes) {
+		if len(signedContracts) != len(rss.ShardHashes) {
 			return fmt.Errorf("number of received signed data items %d does not match number of shards %d",
-				len(signedContracts), len(rss.shardHashes))
+				len(signedContracts), len(rss.ShardHashes))
 		}
 		var cm cmap.ConcurrentMap
-		if cm = escrowChanMaps; req.Arguments[4] == contractsTypeGuard {
-			cm = guardChanMaps
+		if cm = uh.EscrowChanMaps; req.Arguments[4] == contractsTypeGuard {
+			cm = uh.GuardChanMaps
 		}
-		for i := 0; i < len(rss.shardHashes); i++ {
+		for i := 0; i < len(rss.ShardHashes); i++ {
 			shardId := signedContracts[i].Key
 			ch, found := cm.Get(shardId)
 			if !found {
 				return fmt.Errorf("can not find an entry for key %s", shardId)
 			}
-			by, err := stringToBytes(signedContracts[i].ContractData, Base64)
+			by, err := helper.StringToBytes(signedContracts[i].ContractData, helper.Base64)
 			if err != nil {
 				return err
 			}
@@ -71,8 +74,8 @@ This command reads all the unsigned contracts from the upload session
 	},
 }
 
-func verifyReceivedMessage(req *cmds.Request, rss *RenterSession) error {
-	meta, err := rss.offlineMeta()
+func verifyReceivedMessage(req *cmds.Request, rss *sessions.RenterSession) error {
+	meta, err := rss.OfflineMeta()
 	if err != nil {
 		return err
 	}
