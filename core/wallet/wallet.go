@@ -6,10 +6,10 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
-	"github.com/TRON-US/go-btfs/core/commands/storage/upload/escrow"
 	"strings"
 
 	config "github.com/TRON-US/go-btfs-config"
+	"github.com/TRON-US/go-btfs/core/commands/storage/upload/escrow"
 	"github.com/tron-us/go-btfs-common/ledger"
 	escrowpb "github.com/tron-us/go-btfs-common/protos/escrow"
 	exPb "github.com/tron-us/go-btfs-common/protos/exchange"

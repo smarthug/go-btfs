@@ -2,16 +2,17 @@ package upload
 
 import (
 	"context"
-	config "github.com/TRON-US/go-btfs-config"
+
 	"github.com/TRON-US/go-btfs/core/commands/storage/upload/escrow"
 	uh "github.com/TRON-US/go-btfs/core/commands/storage/upload/helper"
 	"github.com/TRON-US/go-btfs/core/commands/storage/upload/sessions"
 	renterpb "github.com/TRON-US/go-btfs/protos/renter"
-	"github.com/tron-us/go-btfs-common/utils/grpc"
 
+	config "github.com/TRON-US/go-btfs-config"
 	"github.com/tron-us/go-btfs-common/crypto"
 	"github.com/tron-us/go-btfs-common/ledger"
 	escrowpb "github.com/tron-us/go-btfs-common/protos/escrow"
+	"github.com/tron-us/go-btfs-common/utils/grpc"
 	"github.com/tron-us/protobuf/proto"
 )
 

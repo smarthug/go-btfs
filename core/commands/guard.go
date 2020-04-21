@@ -2,14 +2,14 @@ package commands
 
 import (
 	"fmt"
-	uh "github.com/TRON-US/go-btfs/core/commands/storage/upload/helper"
-	"github.com/TRON-US/go-btfs/core/commands/storage/upload/sessions"
-	"github.com/TRON-US/go-btfs/core/commands/storage/upload/upload"
 	"strings"
 	"time"
 
 	"github.com/TRON-US/go-btfs/core/commands/cmdenv"
 	"github.com/TRON-US/go-btfs/core/commands/storage/helper"
+	uh "github.com/TRON-US/go-btfs/core/commands/storage/upload/helper"
+	"github.com/TRON-US/go-btfs/core/commands/storage/upload/sessions"
+	"github.com/TRON-US/go-btfs/core/commands/storage/upload/upload"
 	"github.com/TRON-US/go-btfs/core/hub"
 
 	cmds "github.com/TRON-US/go-btfs-cmds"

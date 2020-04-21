@@ -3,11 +3,11 @@ package sessions
 import (
 	"context"
 	"fmt"
-	uh "github.com/TRON-US/go-btfs/core/commands/storage/upload/helper"
 	"strings"
 	"time"
 
 	"github.com/TRON-US/go-btfs/core/commands/storage/helper"
+	uh "github.com/TRON-US/go-btfs/core/commands/storage/upload/helper"
 	renterpb "github.com/TRON-US/go-btfs/protos/renter"
 
 	"github.com/ipfs/go-datastore"

@@ -2,12 +2,14 @@ package upload
 
 import (
 	"errors"
+	"time"
+
 	"github.com/TRON-US/go-btfs/core/commands/storage/upload/helper"
 	"github.com/TRON-US/go-btfs/core/commands/storage/upload/sessions"
 	"github.com/TRON-US/go-btfs/core/corehttp/remote"
+
 	"github.com/cenkalti/backoff/v3"
 	"github.com/libp2p/go-libp2p-core/peer"
-	"time"
 )
 
 func UploadShard(rss *sessions.RenterSession, hp *helper.HostsProvider, price int64, shardSize int64,

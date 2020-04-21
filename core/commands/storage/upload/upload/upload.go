@@ -1,18 +1,18 @@
 package upload
 
 import (
-	"github.com/TRON-US/go-btfs/core/commands/storage/upload/helper"
-	"github.com/TRON-US/go-btfs/core/commands/storage/upload/offline"
-	"github.com/TRON-US/go-btfs/core/commands/storage/upload/sessions"
-	logging "github.com/ipfs/go-log"
 	"strconv"
 	"time"
 
-	renterpb "github.com/TRON-US/go-btfs/protos/renter"
+	"github.com/TRON-US/go-btfs/core/commands/storage/upload/helper"
+	"github.com/TRON-US/go-btfs/core/commands/storage/upload/offline"
+	"github.com/TRON-US/go-btfs/core/commands/storage/upload/sessions"
 
 	cmds "github.com/TRON-US/go-btfs-cmds"
+	renterpb "github.com/TRON-US/go-btfs/protos/renter"
 
 	"github.com/google/uuid"
+	logging "github.com/ipfs/go-log"
 	"github.com/libp2p/go-libp2p-core/peer"
 	cmap "github.com/orcaman/concurrent-map"
 )

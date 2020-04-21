@@ -3,11 +3,10 @@ package sessions
 import (
 	"context"
 	"fmt"
-	helper2 "github.com/TRON-US/go-btfs/core/commands/storage/upload/helper"
-	logging "github.com/ipfs/go-log"
 	"strings"
 
 	"github.com/TRON-US/go-btfs/core/commands/storage/helper"
+	uh "github.com/TRON-US/go-btfs/core/commands/storage/upload/helper"
 	shardpb "github.com/TRON-US/go-btfs/protos/shard"
 
 	guardpb "github.com/tron-us/go-btfs-common/protos/guard"
@@ -15,6 +14,7 @@ import (
 	"github.com/tron-us/protobuf/proto"
 
 	"github.com/ipfs/go-datastore"
+	logging "github.com/ipfs/go-log"
 	"github.com/looplab/fsm"
 	cmap "github.com/orcaman/concurrent-map"
 )
@@ -51,7 +51,7 @@ type RenterShard struct {
 	ds     datastore.Datastore
 }
 
-func GetRenterShard(ctxParams *helper2.ContextParams, ssId string, hash string, index int) (*RenterShard, error) {
+func GetRenterShard(ctxParams *uh.ContextParams, ssId string, hash string, index int) (*RenterShard, error) {
 	shardId := GetShardId(ssId, hash, index)
 	k := fmt.Sprintf(renterShardsInMemKey, ctxParams.N.Identity.Pretty(), shardId)
 	var rs *RenterShard

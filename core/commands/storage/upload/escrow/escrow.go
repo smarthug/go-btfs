@@ -2,8 +2,10 @@ package escrow
 
 import (
 	"fmt"
-	config "github.com/TRON-US/go-btfs-config"
+
 	"github.com/TRON-US/go-btfs/core/commands/storage/helper"
+
+	config "github.com/TRON-US/go-btfs-config"
 	"github.com/tron-us/go-btfs-common/crypto"
 	escrowpb "github.com/tron-us/go-btfs-common/protos/escrow"
 	"github.com/tron-us/protobuf/proto"

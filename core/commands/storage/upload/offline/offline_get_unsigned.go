@@ -2,6 +2,7 @@ package offline
 
 import (
 	"errors"
+
 	"github.com/TRON-US/go-btfs/core/commands/storage/helper"
 	helper2 "github.com/TRON-US/go-btfs/core/commands/storage/upload/helper"
 	"github.com/TRON-US/go-btfs/core/commands/storage/upload/sessions"

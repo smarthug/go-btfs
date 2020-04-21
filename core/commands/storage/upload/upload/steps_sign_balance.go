@@ -3,11 +3,11 @@ package upload
 import (
 	"context"
 	"fmt"
+
+	"github.com/TRON-US/go-btfs/core/commands/storage/helper"
 	"github.com/TRON-US/go-btfs/core/commands/storage/upload/escrow"
 	uh "github.com/TRON-US/go-btfs/core/commands/storage/upload/helper"
 	"github.com/TRON-US/go-btfs/core/commands/storage/upload/sessions"
-
-	"github.com/TRON-US/go-btfs/core/commands/storage/helper"
 	renterpb "github.com/TRON-US/go-btfs/protos/renter"
 
 	config "github.com/TRON-US/go-btfs-config"
